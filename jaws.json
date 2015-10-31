@@ -1,0 +1,19 @@
+{
+  "name": "sharkapiators",
+  "version": "0.0.1",
+  "location": "https://github.com/...",
+  "author": "",
+  "description": "",
+  "domain": "myapp-Vy4CVOhZ.com",
+  "stages": {
+    "dev": [
+      {
+        "region": "us-east-1",
+        "iamRoleArnLambda": "arn:aws:iam::314488437581:role/dev-sharkapiators-r-IamRoleLambda-JZ3QXPIU9PA5",
+        "iamRoleArnApiGateway": "arn:aws:iam::314488437581:role/dev-sharkapiators-r-IamRoleApiGateway-A43WPAV39I5M",
+        "jawsBucket": "jaws.dev.useast1.myapp-vy4cvohz.com",
+        "restApiId": "ab15870sx8"
+      }
+    ]
+  }
+}
