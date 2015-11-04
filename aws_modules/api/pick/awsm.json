@@ -31,7 +31,7 @@
       "AuthorizationType": "none",
       "ApiKeyRequired": false,
       "RequestTemplates": {
-        "application/json": "{\"httpMethod\": \"$context.httpMethod\",\"body\": $input.json('$')}"
+        "application/json": "{\"user_key\": \"$input.params('user_key')\", \"httpMethod\": \"$context.httpMethod\",\"body\": $input.json('$')}"
       },
       "RequestParameters": {},
       "Responses": {
