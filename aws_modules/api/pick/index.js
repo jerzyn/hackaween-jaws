@@ -1,6 +1,7 @@
 /**
  * AWS Module: Action: Modularized Code
  */
+var threescale = require('awsm-3scale').authenticate;
 
 // Export For Lambda Handler
 module.exports.run = function(event, context, cb) {
@@ -9,7 +10,6 @@ module.exports.run = function(event, context, cb) {
 
 // Your Code
 var action = function(event, context) {
-  console.log('Received event:', JSON.stringify(event, null, 2));
 
   var questions = [
     "A romantic candlelit dinner would be incomplete without _____.",
@@ -339,7 +339,7 @@ var action = function(event, context) {
     "German dungeon porn.",
     "Getting abducted by Peter Pan.",
     "Getting drunk on mouthwash.",
-    "Getting hilariously gang-banged by the Blue Man Group.",
+    "Getting hilariously gang-banged by the Blue Man Group."
   ];
 
   var pickAQuestion = function() {
@@ -352,9 +352,24 @@ var action = function(event, context) {
       return randomAnswer;
     };
 
-  if(event.httpMethod == "POST" && event.body){
-      context.succeed({"message": event.body});
-  } else {
+    console.log(threescale.authenticate(event.user_key));
+    if (threescale.authenticate(event.user_key)) {
       context.succeed({"question": pickAQuestion(), "answer": pickAnAnswer()});
-  }
+    } else {
+      context.fail('403, unauthorized');
+    }
+
+  //console.log(event.user_key);
+  // threescale.authenticate(event.user_key, function(err, res) {
+  //   console.log('err=' + err + "\n res=" + res);
+  //   if (!res) {
+  //     console.log("FAAAIL")
+  //     context.fail(err);
+  //   } else {
+  //     console.log("PASSS")
+  //     context.succeed({"question": pickAQuestion(), "answer": pickAnAnswer()});
+  //     //return {"question": pickAQuestion(), "answer": pickAnAnswer()};
+  //   } 
+  // });
+  //context.succeed("AAAA")
 };
