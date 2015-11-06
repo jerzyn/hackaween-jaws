@@ -18,7 +18,7 @@
         "Timeout": 6,
         "Code": {
           "S3Bucket": "jaws.dev.useast1.myapp-vy4cvohz.com",
-          "S3Key": "JAWS/sharkapiators/dev/lambdas/lApiPick@1446646855502.zip"
+          "S3Key": "JAWS/sharkapiators/dev/lambdas/lApiPick@1446660867168.zip"
         },
         "Role": {
           "Ref": "aaLambdaRoleArn"
